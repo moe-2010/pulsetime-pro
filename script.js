@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const state = {
         theme: localStorage.getItem('theme') || 'light',
         sidebarCollapsed: localStorage.getItem('sidebarCollapsed') === 'true',
-        activeTab: 'stopwatch',
+        activeTab: 'home',
         stopwatch: { startTime: 0, elapsedTime: 0, timerInterval: null, laps: [], isRunning: false },
         timer: { endTime: 0, remaining: 0, interval: null, isRunning: false },
         pomodoro: { endTime: 0, remaining: 25 * 60, duration: 25 * 60, interval: null, mode: 'work', isRunning: false },
@@ -475,4 +475,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial Renders
     renderMultiTimers();
     renderAlarms();
+});
+
+// Ensure Home is the default entry point on every load
+document.addEventListener('DOMContentLoaded', () => {
+    // We already have a DOMContentLoaded listener, but this ensures the switch happens
+    // after all logic is loaded if the initial call was missed.
+    if (typeof switchTab === 'function') {
+        switchTab('home');
+    }
 });
