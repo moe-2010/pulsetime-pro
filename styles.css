@@ -31,7 +31,6 @@ body.dark-mode {
 * {
     margin: 0; padding: 0; box-sizing: border-box;
     font-family: 'Inter', -apple-system, sans-serif;
-    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -43,10 +42,11 @@ body {
     overflow-x: hidden;
 }
 
-.app-wrapper { 
-    display: flex; 
-    flex-direction: column; 
-    min-height: 100vh; 
+/* Layout Architecture */
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Top Navbar */
@@ -135,13 +135,12 @@ nav { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
 .shortcut-hint { font-size: 0.75rem; color: var(--text-muted); text-align: center; }
 .key { background: var(--glass-border); padding: 0.1rem 0.3rem; border-radius: 4px; font-weight: 700; }
 
-/* Main Content Centering Logic */
+/* Main Content - Perfect Symmetry Logic */
 .app-container {
     display: flex;
     flex: 1;
     margin-top: var(--navbar-height);
     width: 100%;
-    position: relative;
 }
 
 .main-content {
@@ -151,29 +150,31 @@ nav { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
     align-items: center; /* Center children horizontally */
     padding: 4rem 2rem;
     min-width: 0;
-    margin-left: var(--sidebar-width); /* Default desktop margin */
+    /* This margin balances the fixed sidebar to keep content centered in the viewport */
+    margin-left: var(--sidebar-width);
     transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Adjust margin when sidebar is collapsed */
 .sidebar.collapsed + .menu-overlay + .main-content {
     margin-left: var(--sidebar-collapsed-width);
 }
 
 .content-wrapper {
     width: 100%;
-    max-width: 900px; /* Limit width for professional centered look */
+    max-width: 1000px; /* Wider for better balance */
     display: flex;
     flex-direction: column;
+    align-items: center; /* Center all internal elements */
 }
 
 .content-header { 
-    margin-bottom: 3rem; 
-    text-align: left; /* Align text within centered wrapper */
+    margin-bottom: 4rem; 
+    text-align: center; /* Center the titles */
+    width: 100%;
 }
 
-.main-title { font-size: 3.5rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 0.5rem; }
-.main-subtitle { font-size: 1.2rem; color: var(--text-muted); font-weight: 500; }
+.main-title { font-size: 4.5rem; font-weight: 800; letter-spacing: -0.05em; margin-bottom: 0.75rem; }
+.main-subtitle { font-size: 1.25rem; color: var(--text-muted); font-weight: 500; }
 
 .tab-content { display: none; animation: slideUp 0.4s ease; width: 100%; }
 .tab-content.active { display: block; }
@@ -186,46 +187,78 @@ nav { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
-    border-radius: 2.5rem;
-    padding: 4rem 2rem;
+    border-radius: 3rem;
+    padding: 5rem 3rem;
     box-shadow: var(--card-shadow);
     width: 100%;
     text-align: center;
-}
-
-.display-card {
-    margin: 0 auto;
+    margin-bottom: 3rem;
 }
 
 .timer-display {
-    font-size: clamp(4rem, 15vw, 8.5rem);
+    font-size: clamp(4rem, 15vw, 9.5rem);
     font-weight: 800; font-variant-numeric: tabular-nums;
     margin: 2rem 0; letter-spacing: -0.05em; color: var(--text-main);
-    text-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    text-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-/* Buttons */
+/* Buttons & Controls */
 .controls {
     display: flex;
     justify-content: center;
-    gap: 1.25rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
 }
 
 .btn {
-    padding: 1.1rem 2.5rem; border-radius: 1.5rem;
+    padding: 1.2rem 3rem; border-radius: 1.75rem;
     border: none; font-weight: 700; cursor: pointer;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    font-size: 1.15rem; display: inline-flex;
+    font-size: 1.25rem; display: inline-flex;
     align-items: center; justify-content: center; gap: 0.75rem;
-    min-width: 160px;
+    min-width: 180px;
 }
 
 .btn:active { transform: scale(0.96); }
 .btn-primary { background: var(--primary); color: white; }
-.btn-primary:hover { background: var(--primary-hover); box-shadow: 0 15px 25px rgba(99, 102, 241, 0.3); }
+.btn-primary:hover { background: var(--primary-hover); box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3); }
 .btn-secondary { background: var(--secondary); color: white; }
 .btn-danger { background: var(--danger); color: white; }
+
+/* Informational Content - Symmetrical */
+.info-content {
+    margin-top: 5rem;
+    text-align: left;
+    max-width: 850px;
+    width: 100%;
+    background: var(--glass-bg);
+    padding: 4rem;
+    border-radius: 3rem;
+    border: 1px solid var(--glass-border);
+}
+
+.info-content h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem; color: var(--text-main); letter-spacing: -0.04em; }
+.info-content h3 { font-size: 1.75rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1.25rem; color: var(--primary); }
+.info-content p, .info-content li { font-size: 1.15rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.5rem; }
+
+/* Document & Info Pages */
+.doc-card { text-align: left; padding: 4rem; }
+.doc-card h2 { font-size: 2.75rem; font-weight: 800; margin-bottom: 2rem; color: var(--primary); }
+.nav-divider { height: 1px; background: var(--glass-border); margin: 1.5rem 0; }
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem; margin-top: 3rem;
+}
+
+.feat {
+    padding: 2rem; background: rgba(0,0,0,0.02);
+    border-radius: 2rem; border: 1px solid var(--glass-border);
+}
+
+.feat i { font-size: 2rem; color: var(--primary); margin-bottom: 1.25rem; }
+.feat h4 { font-size: 1.25rem; margin-bottom: 0.75rem; font-weight: 700; }
 
 /* Responsive Mobile */
 @media (max-width: 768px) {
@@ -236,162 +269,32 @@ nav { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
         z-index: 1200;
     }
     .sidebar.open { transform: translateX(0); }
-    
-    .main-content { 
-        margin-left: 0 !important; 
-        padding: 2rem 1.25rem;
-    }
-    
-    .main-title { font-size: 2.5rem; text-align: center; }
-    .main-subtitle { text-align: center; font-size: 1rem; }
-    .glass-card { padding: 3rem 1.5rem; border-radius: 2rem; }
+    .main-content { margin-left: 0 !important; padding: 2rem 1.25rem; }
+    .main-title { font-size: 2.75rem; }
+    .glass-card { padding: 3rem 1.5rem; border-radius: 2.5rem; }
     .timer-display { margin: 1.5rem 0; }
-    .btn { min-width: 130px; padding: 1rem 1.5rem; font-size: 1rem; }
-    .nav-center { display: none; }
+    .btn { min-width: 140px; padding: 1rem 2rem; font-size: 1.1rem; }
+    .info-content { padding: 2rem; border-radius: 2rem; }
 }
 
-/* Ad Slots - Integrated into centered layout */
+/* Ad Slots */
 .ad-slot {
     background: rgba(0,0,0,0.02); border: 1px dashed var(--glass-border);
     display: flex; align-items: center; justify-content: center;
-    border-radius: 1.5rem; color: var(--text-muted); font-size: 0.8rem; margin: 2rem 0;
-    width: 100%;
+    border-radius: 2rem; color: var(--text-muted); font-size: 0.9rem; margin: 3rem 0;
+    width: 100%; height: 90px;
 }
-.ad-header { height: 90px; }
-.ad-footer { height: 90px; }
-
-/* Remove Sidebar Ad on Computer for Perfect Centering */
-.ad-sidebar { display: none; }
 
 /* Toast */
 .toast-container {
-    position: fixed; top: calc(var(--navbar-height) + 1rem); right: 1.5rem;
-    z-index: 2000; display: flex; flex-direction: column; gap: 0.75rem;
+    position: fixed; top: calc(var(--navbar-height) + 1.5rem); right: 2rem;
+    z-index: 2000; display: flex; flex-direction: column; gap: 1rem;
 }
 .toast {
-    background: var(--glass-bg); backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border); padding: 1rem 1.5rem;
-    border-radius: 1rem; box-shadow: var(--card-shadow);
-    display: flex; align-items: center; gap: 0.75rem;
-    animation: slideIn 0.3s ease;
+    background: var(--glass-bg); backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border); padding: 1.25rem 2rem;
+    border-radius: 1.25rem; box-shadow: var(--card-shadow);
+    display: flex; align-items: center; gap: 1rem;
+    animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-@keyframes slideIn { from { transform: translateX(30px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-
-/* Document & Info Pages */
-.doc-card {
-    text-align: left;
-    padding: 3rem;
-}
-
-.doc-card h3 {
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    color: var(--primary);
-}
-
-.doc-card p {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--text-main);
-    margin-bottom: 1.5rem;
-}
-
-.nav-divider {
-    height: 1px;
-    background: var(--glass-border);
-    margin: 1rem 0;
-}
-
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.feat {
-    padding: 1.5rem;
-    background: rgba(0,0,0,0.02);
-    border-radius: 1.5rem;
-    border: 1px solid var(--glass-border);
-}
-
-.feat i {
-    font-size: 1.5rem;
-    color: var(--primary);
-    margin-bottom: 1rem;
-}
-
-.feat h4 {
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-}
-
-.feat p {
-    font-size: 0.9rem;
-    margin-bottom: 0;
-}
-
-.policy-section {
-    margin-top: 2rem;
-}
-
-.policy-section h4 {
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-/* Informational Content Styling */
-.info-content {
-    margin-top: 4rem;
-    text-align: left;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 1rem;
-}
-
-.info-content h2 {
-    font-size: 2.25rem;
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    color: var(--text-main);
-    letter-spacing: -0.03em;
-}
-
-.info-content h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
-    color: var(--primary);
-}
-
-.info-content p {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--text-muted);
-    margin-bottom: 1.5rem;
-}
-
-.info-content ul, .info-content ol {
-    margin-bottom: 1.5rem;
-    padding-left: 1.5rem;
-}
-
-.info-content li {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--text-muted);
-    margin-bottom: 0.75rem;
-}
-
-.info-content li strong {
-    color: var(--text-main);
-}
-
-@media (max-width: 768px) {
-    .info-content h2 { font-size: 1.75rem; }
-    .info-content p, .info-content li { font-size: 1rem; }
-}
+@keyframes slideIn { from { transform: translateX(50px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
