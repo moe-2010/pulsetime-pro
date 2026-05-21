@@ -1,13 +1,14 @@
 /**
- * PulseTime Pro - Core JavaScript (v1.5)
- * Final Optimization: Absolute Home Page Default & UI Robustness
+ * PulseTime Pro - Core JavaScript (v1.6)
+ * Ultimate Fix: Ensuring Home Page is the Absolute Default
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Initial State
     const state = {
         theme: localStorage.getItem('theme') || 'light',
         sidebarCollapsed: localStorage.getItem('sidebarCollapsed') === 'true',
-        activeTab: 'home',
+        activeTab: 'home', // Set to home by default
         stopwatch: { startTime: 0, elapsedTime: 0, timerInterval: null, laps: [], isRunning: false },
         timer: { endTime: 0, remaining: 0, interval: null, isRunning: false },
         pomodoro: { endTime: 0, remaining: 25 * 60, duration: 25 * 60, interval: null, mode: 'work', isRunning: false },
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         alarms: JSON.parse(localStorage.getItem('alarms')) || []
     };
 
-    // DOM Elements
+    // 2. DOM Elements
     const sidebar = document.getElementById('sidebar');
     const menuToggle = document.getElementById('menu-toggle');
     const menuOverlay = document.getElementById('menu-overlay');
@@ -27,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainSubtitle = document.getElementById('main-subtitle');
     const activeToolTitle = document.getElementById('active-tool-title');
 
-    // Tool Content Map
+    // 3. Tool Content Map
     const toolContent = {
         home: { title: 'Welcome to PulseTime Pro', subtitle: 'Your all-in-one professional productivity suite.' },
         stopwatch: { title: 'Stopwatch', subtitle: 'Precision tracking with millisecond accuracy.' },
@@ -40,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         privacy: { title: 'Privacy Policy', subtitle: 'How we protect your data.' }
     };
 
-    // --- UI Helpers ---
+    // 4. UI Helpers
     const formatTime = (ms, showMs = true) => {
         if (ms < 0) ms = 0;
         const h = Math.floor(ms / 3600000).toString().padStart(2, '0');
@@ -70,54 +71,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const playAlarm = () => {
         const audio = document.getElementById('audio-alarm-1');
-        if (audio) { audio.currentTime = 0; audio.play().catch(() => showToast('Timer Finished!', 'success')); }
+        if (audio) { audio.currentTime = 0; audio.play().catch(() => {}); }
     };
 
-    // --- Navigation & Sidebar Logic ---
-    const toggleSidebar = (forceState) => {
-        const isMobile = window.innerWidth <= 768;
-        if (isMobile) {
-            const show = forceState !== undefined ? forceState : !sidebar.classList.contains('open');
-            sidebar.classList.toggle('open', show);
-            menuOverlay.classList.toggle('show', show);
-        } else {
-            state.sidebarCollapsed = forceState !== undefined ? forceState : !state.sidebarCollapsed;
-            sidebar.classList.toggle('collapsed', state.sidebarCollapsed);
-            localStorage.setItem('sidebarCollapsed', state.sidebarCollapsed);
-        }
-    };
-
-    menuToggle.addEventListener('click', () => toggleSidebar());
-    menuOverlay.addEventListener('click', () => toggleSidebar(false));
-
-    // Initialize Sidebar State
-    if (window.innerWidth > 768) {
-        if (state.sidebarCollapsed) sidebar.classList.add('collapsed');
-        else sidebar.classList.remove('collapsed');
-    }
-
+    // 5. Navigation Logic
     const switchTab = (tabId) => {
         if (!toolContent[tabId]) return;
         state.activeTab = tabId;
         
-        // Update Nav UI
-        navItems.forEach(i => {
-            const itemTab = i.getAttribute('data-tab');
-            i.classList.toggle('active', itemTab === tabId);
-        });
+        // Update Sidebar Active State
+        navItems.forEach(i => i.classList.toggle('active', i.getAttribute('data-tab') === tabId));
         
-        // Update Content UI
-        tabContents.forEach(t => {
-            t.classList.toggle('active', t.id === tabId);
-        });
+        // Update Content Visibility
+        tabContents.forEach(t => t.classList.toggle('active', t.id === tabId));
         
-        // Update Titles
+        // Update Headers
         const content = toolContent[tabId];
         mainTitle.textContent = content.title;
         mainSubtitle.textContent = content.subtitle;
         activeToolTitle.textContent = content.title;
 
-        if (window.innerWidth <= 768) toggleSidebar(false);
+        // Close Mobile Sidebar if open
+        if (window.innerWidth <= 768) {
+            sidebar.classList.remove('open');
+            menuOverlay.classList.remove('show');
+        }
+        
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
@@ -125,26 +104,26 @@ document.addEventListener('DOMContentLoaded', () => {
         item.addEventListener('click', () => switchTab(item.getAttribute('data-tab')));
     });
 
-    // --- Keyboard Shortcuts ---
-    window.addEventListener('keydown', (e) => {
-        if (e.code === 'Space') {
-            if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
-                e.preventDefault();
-                handlePrimaryAction();
-            }
-        }
-    });
-
-    const handlePrimaryAction = () => {
-        switch (state.activeTab) {
-            case 'stopwatch': document.getElementById('stopwatch-start').click(); break;
-            case 'timer': document.getElementById('timer-start').click(); break;
-            case 'pomodoro': document.getElementById('pomodoro-start').click(); break;
-            case 'sleeptimer': document.getElementById('sleep-start').click(); break;
+    const toggleSidebar = () => {
+        if (window.innerWidth <= 768) {
+            sidebar.classList.toggle('open');
+            menuOverlay.classList.toggle('show');
+        } else {
+            state.sidebarCollapsed = !state.sidebarCollapsed;
+            sidebar.classList.toggle('collapsed', state.sidebarCollapsed);
+            localStorage.setItem('sidebarCollapsed', state.sidebarCollapsed);
         }
     };
 
-    // --- Theme Management ---
+    menuToggle.addEventListener('click', toggleSidebar);
+    menuOverlay.addEventListener('click', toggleSidebar);
+
+    // Initial Sidebar State
+    if (window.innerWidth > 768 && state.sidebarCollapsed) {
+        sidebar.classList.add('collapsed');
+    }
+
+    // 6. Theme Logic
     const applyTheme = (theme) => {
         document.body.className = theme === 'dark' ? 'dark-mode' : 'light-mode';
         themeToggleBtns.forEach(btn => {
@@ -160,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Stopwatch Logic ---
+    // 7. Stopwatch Logic
     const swDisplay = document.getElementById('stopwatch-display');
     const swStartBtn = document.getElementById('stopwatch-start');
     const swLapBtn = document.getElementById('stopwatch-lap');
@@ -179,14 +158,12 @@ document.addEventListener('DOMContentLoaded', () => {
             state.stopwatch.isRunning = false;
             cancelAnimationFrame(state.stopwatch.timerInterval);
             swStartBtn.textContent = 'Resume';
-            swStartBtn.className = 'btn btn-primary';
             swLapBtn.disabled = true;
         } else {
             state.stopwatch.isRunning = true;
             state.stopwatch.startTime = Date.now() - state.stopwatch.elapsedTime;
             state.stopwatch.timerInterval = requestAnimationFrame(updateStopwatch);
             swStartBtn.textContent = 'Pause';
-            swStartBtn.className = 'btn btn-secondary';
             swLapBtn.disabled = false;
         }
     });
@@ -207,12 +184,11 @@ document.addEventListener('DOMContentLoaded', () => {
         state.stopwatch.laps = [];
         swDisplay.textContent = '00:00:00.00';
         swStartBtn.textContent = 'Start';
-        swStartBtn.className = 'btn btn-primary';
         swLapBtn.disabled = true;
         lapList.innerHTML = '';
     });
 
-    // --- Countdown Timer Logic ---
+    // 8. Countdown Timer Logic
     const timerDisplay = document.getElementById('timer-display');
     const timerStartBtn = document.getElementById('timer-start');
     const timerResetBtn = document.getElementById('timer-reset');
@@ -262,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
         timerStartBtn.textContent = 'Start';
     });
 
-    // --- Pomodoro Logic ---
+    // 9. Pomodoro Logic
     const pomoDisplay = document.getElementById('pomodoro-display');
     const pomoStartBtn = document.getElementById('pomodoro-start');
     const pomoResetBtn = document.getElementById('pomodoro-reset');
@@ -318,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Sleep Timer Logic ---
+    // 10. Sleep Timer Logic
     const sleepDisplay = document.getElementById('sleep-display');
     const sleepStartBtn = document.getElementById('sleep-start');
     const sleepResetBtn = document.getElementById('sleep-reset');
@@ -362,11 +338,12 @@ document.addEventListener('DOMContentLoaded', () => {
         sleepStartBtn.textContent = 'Start';
     });
 
-    // --- Multi-Timer System ---
+    // 11. Multi-Timer System
     const multiContainer = document.getElementById('multitimer-container');
     const addMultiBtn = document.getElementById('add-multitimer');
 
     const renderMultiTimers = () => {
+        if (!multiContainer) return;
         multiContainer.innerHTML = '';
         if (state.multiTimers.length === 0) {
             multiContainer.innerHTML = '<div class="glass-card" style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">No active timers.</div>';
@@ -427,11 +404,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Alarm System ---
+    // 12. Alarm System
     const alarmContainer = document.getElementById('alarm-container');
     const addAlarmBtn = document.getElementById('add-alarm');
 
     const renderAlarms = () => {
+        if (!alarmContainer) return;
         alarmContainer.innerHTML = '';
         if (state.alarms.length === 0) {
             alarmContainer.innerHTML = '<div class="glass-card" style="text-align: center; color: var(--text-muted);">No alarms set.</div>';
@@ -482,10 +460,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, 1000);
 
-    // --- Final Initialization ---
+    // 13. Keyboard Shortcuts
+    window.addEventListener('keydown', (e) => {
+        if (e.code === 'Space') {
+            if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+                e.preventDefault();
+                switch (state.activeTab) {
+                    case 'stopwatch': document.getElementById('stopwatch-start').click(); break;
+                    case 'timer': document.getElementById('timer-start').click(); break;
+                    case 'pomodoro': document.getElementById('pomodoro-start').click(); break;
+                    case 'sleeptimer': document.getElementById('sleep-start').click(); break;
+                }
+            }
+        }
+    });
+
+    // 14. Final Initialization & DEFAULT PAGE FORCE
     renderMultiTimers();
     renderAlarms();
     
-    // FORCE HOME PAGE ON LOAD
+    // THE ABSOLUTE FORCE: Ensure Home is the first page shown
     switchTab('home');
 });
