@@ -39,15 +39,7 @@
         "@type": "Offer",
         "price": "0.00",
         "priceCurrency": "USD"
-      },
-      "featureList": [
-        "Millisecond-precision Stopwatch",
-        "Customizable Countdown Timers",
-        "Professional Pomodoro System",
-        "Multi-Timer Dashboard",
-        "Sleep Timer with Audio Fade",
-        "Persistent Local Storage"
-      ]
+      }
     }
     </script>
 
@@ -142,6 +134,15 @@
             <!-- Main Content -->
             <main class="main-content">
                 <div class="content-wrapper">
+                    
+                    <!-- AD SLOT 1: HEADER AD -->
+                    <div class="ad-container ad-header-top">
+                        <div class="ad-placeholder">
+                            <i class="fa-solid fa-rectangle-ad"></i>
+                            <span>Google AdSense - Header Responsive</span>
+                        </div>
+                    </div>
+
                     <!-- Dynamic Content Header -->
                     <div class="content-header">
                         <h1 id="main-title" class="main-title">Stopwatch</h1>
@@ -161,15 +162,18 @@
                                 <ul id="lap-list"></ul>
                             </div>
                         </div>
+                        
+                        <!-- AD SLOT 2: MID-CONTENT AD -->
+                        <div class="ad-container ad-mid">
+                            <div class="ad-placeholder">
+                                <i class="fa-solid fa-rectangle-ad"></i>
+                                <span>Google AdSense - In-Feed Ad</span>
+                            </div>
+                        </div>
+
                         <div class="info-content">
                             <h2>The Ultimate Online Stopwatch</h2>
                             <p>PulseTime Pro's stopwatch is designed for maximum accuracy and ease of use. Whether you're timing a workout, a cooking session, or a professional presentation, our millisecond-precision logic ensures you never miss a beat.</p>
-                            <h3>Key Features:</h3>
-                            <ul>
-                                <li><strong>Precision:</strong> Tracks down to the 1/100th of a second.</li>
-                                <li><strong>Lap Tracking:</strong> Record multiple splits without stopping the main timer.</li>
-                                <li><strong>Background Persistence:</strong> Continues running even if you switch tabs.</li>
-                            </ul>
                         </div>
                     </section>
 
@@ -196,15 +200,12 @@
                                 <button id="timer-reset" class="btn btn-danger">Reset</button>
                             </div>
                         </div>
+                        <div class="ad-container ad-mid">
+                            <div class="ad-placeholder"><span>Google AdSense - Timer Ad</span></div>
+                        </div>
                         <div class="info-content">
                             <h2>Professional Countdown Timer</h2>
                             <p>Our countdown timer is the perfect companion for focus sessions, kitchen tasks, or time-boxed meetings. Simply set your hours, minutes, and seconds, and let PulseTime Pro handle the rest.</p>
-                            <h3>How it Works:</h3>
-                            <ol>
-                                <li>Input your desired duration using the intuitive fields.</li>
-                                <li>Press <strong>Start</strong> to begin the countdown.</li>
-                                <li>Receive a professional audio alert when the time is up.</li>
-                            </ol>
                         </div>
                     </section>
 
@@ -222,15 +223,12 @@
                                 <button id="pomodoro-reset" class="btn btn-danger">Reset</button>
                             </div>
                         </div>
+                        <div class="ad-container ad-mid">
+                            <div class="ad-placeholder"><span>Google AdSense - Pomodoro Ad</span></div>
+                        </div>
                         <div class="info-content">
                             <h2>Master Your Focus with Pomodoro</h2>
-                            <p>The Pomodoro Technique is a proven time management method that uses a timer to break work into intervals, traditionally 25 minutes in length, separated by short breaks. PulseTime Pro brings this technique to your browser with a sleek, distraction-free interface.</p>
-                            <h3>Benefits of Pomodoro:</h3>
-                            <ul>
-                                <li><strong>Combat Distractions:</strong> Stay focused on a single task.</li>
-                                <li><strong>Maintain Energy:</strong> Regular breaks prevent burnout.</li>
-                                <li><strong>Track Progress:</strong> Visualize your productivity cycles.</li>
-                            </ul>
+                            <p>The Pomodoro Technique is a proven time management method that uses a timer to break work into intervals, traditionally 25 minutes in length, separated by short breaks.</p>
                         </div>
                     </section>
 
@@ -240,9 +238,8 @@
                             <button id="add-multitimer" class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Timer</button>
                         </div>
                         <div class="multitimer-grid" id="multitimer-container"></div>
-                        <div class="info-content">
-                            <h2>Advanced Multi-Timer Dashboard</h2>
-                            <p>Why settle for one timer when you can have many? Our Multi-Timer system allows you to manage multiple independent countdowns simultaneously. Perfect for complex workflows, multi-step cooking, or tracking different project tasks at once.</p>
+                        <div class="ad-container ad-mid">
+                            <div class="ad-placeholder"><span>Google AdSense - Multi-Timer Ad</span></div>
                         </div>
                     </section>
 
@@ -262,9 +259,8 @@
                             </div>
                             <div id="fade-status" class="status-msg"></div>
                         </div>
-                        <div class="info-content">
-                            <h2>Relax with the Smart Sleep Timer</h2>
-                            <p>Designed for your evening routine, our sleep timer includes a simulated audio fade-out effect. Set your time, start your relaxation, and let PulseTime Pro gently signal the end of your session.</p>
+                        <div class="ad-container ad-mid">
+                            <div class="ad-placeholder"><span>Google AdSense - Sleep Timer Ad</span></div>
                         </div>
                     </section>
 
@@ -274,9 +270,8 @@
                             <button id="add-alarm" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add Alarm</button>
                         </div>
                         <div class="alarm-list" id="alarm-container"></div>
-                        <div class="info-content">
-                            <h2>Reliable Web Alarms</h2>
-                            <p>Never miss an important event. Set multiple alarms with custom labels and toggle them on or off as needed. Our system works seamlessly in the background to ensure you're always on time.</p>
+                        <div class="ad-container ad-mid">
+                            <div class="ad-placeholder"><span>Google AdSense - Alarms Ad</span></div>
                         </div>
                     </section>
 
@@ -284,26 +279,12 @@
                     <section id="about" class="tab-content">
                         <div class="glass-card doc-card">
                             <h2>About PulseTime Pro</h2>
-                            <p>PulseTime Pro was born from a simple idea: that professional productivity tools should be as beautiful as they are functional. We've combined modern SaaS design principles with rock-solid timing logic to create the ultimate time management suite.</p>
-                            <h3>Our Philosophy</h3>
-                            <p>We believe that your tools should never get in your way. That's why PulseTime Pro requires no account, collects no personal data, and works entirely within your browser. It's time management for the modern, privacy-conscious professional.</p>
-                            <div class="feature-grid">
-                                <div class="feat">
-                                    <i class="fa-solid fa-shield-check"></i>
-                                    <h4>Privacy First</h4>
-                                    <p>Your data stays on your device. We never see your timers or settings.</p>
-                                </div>
-                                <div class="feat">
-                                    <i class="fa-solid fa-bolt"></i>
-                                    <h4>Performance</h4>
-                                    <p>Lightweight, fast, and optimized for both desktop and mobile use.</p>
-                                </div>
-                                <div class="feat">
-                                    <i class="fa-solid fa-cloud-slash"></i>
-                                    <h4>Offline Ready</h4>
-                                    <p>Works perfectly even without an internet connection once loaded.</p>
-                                </div>
+                            <p>PulseTime Pro was born from a simple idea: that professional productivity tools should be as beautiful as they are functional.</p>
+                            <div class="ad-container ad-mid">
+                                <div class="ad-placeholder"><span>Google AdSense - About Page Ad</span></div>
                             </div>
+                            <h3>Our Philosophy</h3>
+                            <p>We believe that your tools should never get in your way. That's why PulseTime Pro requires no account, collects no personal data, and works entirely within your browser.</p>
                         </div>
                     </section>
 
@@ -312,31 +293,39 @@
                         <div class="glass-card doc-card">
                             <h2>Privacy Policy</h2>
                             <p>Last updated: May 21, 2026</p>
+                            <div class="ad-container ad-mid">
+                                <div class="ad-placeholder"><span>Google AdSense - Privacy Page Ad</span></div>
+                            </div>
                             <div class="policy-section">
                                 <h3>1. Data Collection & Storage</h3>
-                                <p>PulseTime Pro is a "privacy-by-design" application. We do not collect, store, or transmit any personal information. All your data—including timers, alarms, and theme settings—is stored locally in your browser's <strong>LocalStorage</strong>.</p>
-                            </div>
-                            <div class="policy-section">
-                                <h3>2. No Tracking</h3>
-                                <p>We do not use tracking pixels, invasive analytics, or third-party cookies to monitor your behavior. Your productivity is your business.</p>
-                            </div>
-                            <div class="policy-section">
-                                <h3>3. Cookies</h3>
-                                <p>PulseTime Pro does not use traditional cookies. We use LocalStorage to remember your preferences between sessions.</p>
-                            </div>
-                            <div class="policy-section">
-                                <h3>4. Contact</h3>
-                                <p>Since we do not collect any data, we have no way to contact you. If you have questions, please refer to our GitHub repository for support.</p>
+                                <p>PulseTime Pro is a "privacy-by-design" application. We do not collect, store, or transmit any personal information.</p>
                             </div>
                         </div>
                     </section>
 
-                    <!-- Footer Ad Slot -->
-                    <div class="ad-slot ad-footer">
-                        <span class="ad-placeholder">Ad Space - Footer</span>
+                    <!-- AD SLOT 3: FOOTER AD -->
+                    <div class="ad-container ad-footer-bottom">
+                        <div class="ad-placeholder">
+                            <i class="fa-solid fa-rectangle-ad"></i>
+                            <span>Google AdSense - Footer Responsive</span>
+                        </div>
                     </div>
+
                 </div> <!-- End Content Wrapper -->
             </main>
+        </div>
+    </div>
+
+    <!-- STICKY ANCHOR AD (MAX REVENUE) -->
+    <div class="sticky-anchor-ad">
+        <div class="sticky-ad-content">
+            <div class="ad-label">SPONSORED</div>
+            <div class="ad-placeholder-sticky">
+                <span>Google AdSense - Sticky Bottom Anchor Ad</span>
+            </div>
+            <button class="close-sticky-ad" onclick="this.parentElement.parentElement.remove()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
         </div>
     </div>
 
