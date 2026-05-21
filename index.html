@@ -114,110 +114,112 @@
 
             <!-- Main Content -->
             <main class="main-content">
-                <!-- Main Header Title (Professional Appearance) -->
-                <div class="content-header">
-                    <h1 id="main-title" class="main-title">Stopwatch</h1>
-                    <p id="main-subtitle" class="main-subtitle">Precision tracking with millisecond accuracy.</p>
-                </div>
-
-                <!-- Stopwatch Section -->
-                <section id="stopwatch" class="tab-content active">
-                    <div class="glass-card display-card">
-                        <div class="timer-display" id="stopwatch-display">00:00:00.00</div>
-                        <div class="controls">
-                            <button id="stopwatch-start" class="btn btn-primary">Start</button>
-                            <button id="stopwatch-lap" class="btn btn-secondary" disabled>Lap</button>
-                            <button id="stopwatch-reset" class="btn btn-danger">Reset</button>
-                        </div>
-                        <div class="lap-list-container">
-                            <ul id="lap-list"></ul>
-                        </div>
+                <div class="content-wrapper">
+                    <!-- Main Header Title (Professional Appearance) -->
+                    <div class="content-header">
+                        <h1 id="main-title" class="main-title">Stopwatch</h1>
+                        <p id="main-subtitle" class="main-subtitle">Precision tracking with millisecond accuracy.</p>
                     </div>
-                </section>
 
-                <!-- Countdown Timer Section -->
-                <section id="timer" class="tab-content">
-                    <div class="glass-card display-card">
-                        <div class="timer-input-group">
-                            <div class="input-field">
-                                <input type="number" id="timer-h" min="0" max="99" value="0" inputmode="numeric">
-                                <span>HH</span>
+                    <!-- Stopwatch Section -->
+                    <section id="stopwatch" class="tab-content active">
+                        <div class="glass-card display-card">
+                            <div class="timer-display" id="stopwatch-display">00:00:00.00</div>
+                            <div class="controls">
+                                <button id="stopwatch-start" class="btn btn-primary">Start</button>
+                                <button id="stopwatch-lap" class="btn btn-secondary" disabled>Lap</button>
+                                <button id="stopwatch-reset" class="btn btn-danger">Reset</button>
                             </div>
-                            <div class="input-field">
-                                <input type="number" id="timer-m" min="0" max="59" value="0" inputmode="numeric">
-                                <span>MM</span>
-                            </div>
-                            <div class="input-field">
-                                <input type="number" id="timer-s" min="0" max="59" value="0" inputmode="numeric">
-                                <span>SS</span>
+                            <div class="lap-list-container">
+                                <ul id="lap-list"></ul>
                             </div>
                         </div>
-                        <div class="timer-display" id="timer-display">00:00:00</div>
-                        <div class="controls">
-                            <button id="timer-start" class="btn btn-primary">Start</button>
-                            <button id="timer-reset" class="btn btn-danger">Reset</button>
-                        </div>
-                    </div>
-                </section>
+                    </section>
 
-                <!-- Pomodoro Section -->
-                <section id="pomodoro" class="tab-content">
-                    <div class="glass-card display-card">
-                        <div class="pomodoro-modes">
-                            <button class="pomo-mode active" data-time="25">Work</button>
-                            <button class="pomo-mode" data-time="5">Short Break</button>
-                            <button class="pomo-mode" data-time="15">Long Break</button>
-                        </div>
-                        <div class="timer-display" id="pomodoro-display">25:00</div>
-                        <div class="controls">
-                            <button id="pomodoro-start" class="btn btn-primary">Start</button>
-                            <button id="pomodoro-reset" class="btn btn-danger">Reset</button>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Multi-Timer Section -->
-                <section id="multitimer" class="tab-content">
-                    <div class="section-header">
-                        <button id="add-multitimer" class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Timer</button>
-                    </div>
-                    <div class="multitimer-grid" id="multitimer-container">
-                        <!-- Dynamic Timers -->
-                    </div>
-                </section>
-
-                <!-- Sleep Timer Section -->
-                <section id="sleeptimer" class="tab-content">
-                    <div class="glass-card display-card">
-                        <div class="timer-input-group">
-                            <div class="input-field">
-                                <input type="number" id="sleep-m" min="1" max="120" value="30" inputmode="numeric">
-                                <span>Minutes</span>
+                    <!-- Countdown Timer Section -->
+                    <section id="timer" class="tab-content">
+                        <div class="glass-card display-card">
+                            <div class="timer-input-group">
+                                <div class="input-field">
+                                    <input type="number" id="timer-h" min="0" max="99" value="0" inputmode="numeric">
+                                    <span>HH</span>
+                                </div>
+                                <div class="input-field">
+                                    <input type="number" id="timer-m" min="0" max="59" value="0" inputmode="numeric">
+                                    <span>MM</span>
+                                </div>
+                                <div class="input-field">
+                                    <input type="number" id="timer-s" min="0" max="59" value="0" inputmode="numeric">
+                                    <span>SS</span>
+                                </div>
+                            </div>
+                            <div class="timer-display" id="timer-display">00:00:00</div>
+                            <div class="controls">
+                                <button id="timer-start" class="btn btn-primary">Start</button>
+                                <button id="timer-reset" class="btn btn-danger">Reset</button>
                             </div>
                         </div>
-                        <div class="timer-display" id="sleep-display">30:00</div>
-                        <div class="controls">
-                            <button id="sleep-start" class="btn btn-primary">Start</button>
-                            <button id="sleep-reset" class="btn btn-danger">Reset</button>
+                    </section>
+
+                    <!-- Pomodoro Section -->
+                    <section id="pomodoro" class="tab-content">
+                        <div class="glass-card display-card">
+                            <div class="pomodoro-modes">
+                                <button class="pomo-mode active" data-time="25">Work</button>
+                                <button class="pomo-mode" data-time="5">Short Break</button>
+                                <button class="pomo-mode" data-time="15">Long Break</button>
+                            </div>
+                            <div class="timer-display" id="pomodoro-display">25:00</div>
+                            <div class="controls">
+                                <button id="pomodoro-start" class="btn btn-primary">Start</button>
+                                <button id="pomodoro-reset" class="btn btn-danger">Reset</button>
+                            </div>
                         </div>
-                        <div id="fade-status" class="status-msg"></div>
-                    </div>
-                </section>
+                    </section>
 
-                <!-- Alarms Section -->
-                <section id="alarm" class="tab-content">
-                    <div class="section-header">
-                        <button id="add-alarm" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add Alarm</button>
-                    </div>
-                    <div class="alarm-list" id="alarm-container">
-                        <!-- Dynamic Alarms -->
-                    </div>
-                </section>
+                    <!-- Multi-Timer Section -->
+                    <section id="multitimer" class="tab-content">
+                        <div class="section-header">
+                            <button id="add-multitimer" class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Timer</button>
+                        </div>
+                        <div class="multitimer-grid" id="multitimer-container">
+                            <!-- Dynamic Timers -->
+                        </div>
+                    </section>
 
-                <!-- Ads -->
-                <div class="ad-slot ad-footer">
-                    <span class="ad-placeholder">Ad Space - Footer</span>
-                </div>
+                    <!-- Sleep Timer Section -->
+                    <section id="sleeptimer" class="tab-content">
+                        <div class="glass-card display-card">
+                            <div class="timer-input-group">
+                                <div class="input-field">
+                                    <input type="number" id="sleep-m" min="1" max="120" value="30" inputmode="numeric">
+                                    <span>Minutes</span>
+                                </div>
+                            </div>
+                            <div class="timer-display" id="sleep-display">30:00</div>
+                            <div class="controls">
+                                <button id="sleep-start" class="btn btn-primary">Start</button>
+                                <button id="sleep-reset" class="btn btn-danger">Reset</button>
+                            </div>
+                            <div id="fade-status" class="status-msg"></div>
+                        </div>
+                    </section>
+
+                    <!-- Alarms Section -->
+                    <section id="alarm" class="tab-content">
+                        <div class="section-header">
+                            <button id="add-alarm" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add Alarm</button>
+                        </div>
+                        <div class="alarm-list" id="alarm-container">
+                            <!-- Dynamic Alarms -->
+                        </div>
+                    </section>
+
+                    <!-- Ads -->
+                    <div class="ad-slot ad-footer">
+                        <span class="ad-placeholder">Ad Space - Footer</span>
+                    </div>
+                </div> <!-- End Content Wrapper -->
             </main>
         </div>
     </div>
