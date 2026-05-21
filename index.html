@@ -69,7 +69,7 @@
                 </div>
             </div>
             <div class="nav-center desktop-only">
-                <span id="active-tool-title" class="active-tool-display">Stopwatch</span>
+                <span id="active-tool-title" class="active-tool-display">Home</span>
             </div>
             <div class="nav-right">
                 <button class="theme-toggle-btn icon-btn" title="Toggle Theme">
@@ -85,7 +85,11 @@
             <!-- Sidebar Navigation -->
             <aside id="sidebar" class="sidebar">
                 <nav>
-                    <button class="nav-item active" data-tab="stopwatch" title="Stopwatch">
+                    <button class="nav-item active" data-tab="home" title="Home">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="nav-text">Home</span>
+                    </button>
+                    <button class="nav-item" data-tab="stopwatch" title="Stopwatch">
                         <i class="fa-solid fa-stopwatch"></i>
                         <span class="nav-text">Stopwatch</span>
                     </button>
@@ -145,12 +149,70 @@
 
                     <!-- Dynamic Content Header -->
                     <div class="content-header">
-                        <h1 id="main-title" class="main-title">Stopwatch</h1>
-                        <p id="main-subtitle" class="main-subtitle">Precision tracking with millisecond accuracy.</p>
+                        <h1 id="main-title" class="main-title">Welcome to PulseTime Pro</h1>
+                        <p id="main-subtitle" class="main-subtitle">Your all-in-one professional productivity suite.</p>
                     </div>
 
+                    <!-- HOME / LANDING PAGE SECTION -->
+                    <section id="home" class="tab-content active">
+                        <div class="glass-card hero-card">
+                            <div class="hero-content">
+                                <i class="fa-solid fa-bolt-lightning hero-icon"></i>
+                                <h2>Master Your Time, Master Your Life</h2>
+                                <p>PulseTime Pro brings together a suite of premium time management tools designed for professionals, students, and creators. No accounts, no tracking, just pure productivity.</p>
+                                <button class="btn btn-primary btn-large" onclick="document.querySelector('[data-tab=stopwatch]').click()">Get Started <i class="fa-solid fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="feature-showcase">
+                            <div class="glass-card feat-mini" onclick="document.querySelector('[data-tab=stopwatch]').click()">
+                                <i class="fa-solid fa-stopwatch"></i>
+                                <h3>Stopwatch</h3>
+                                <p>Precision millisecond tracking with lap support.</p>
+                            </div>
+                            <div class="glass-card feat-mini" onclick="document.querySelector('[data-tab=timer]').click()">
+                                <i class="fa-solid fa-hourglass-half"></i>
+                                <h3>Timer</h3>
+                                <p>Custom countdowns for every task.</p>
+                            </div>
+                            <div class="glass-card feat-mini" onclick="document.querySelector('[data-tab=pomodoro]').click()">
+                                <i class="fa-solid fa-brain"></i>
+                                <h3>Pomodoro</h3>
+                                <p>Deep focus sessions and break cycles.</p>
+                            </div>
+                            <div class="glass-card feat-mini" onclick="document.querySelector('[data-tab=multitimer]').click()">
+                                <i class="fa-solid fa-layer-group"></i>
+                                <h3>Multi-Timer</h3>
+                                <p>Manage multiple tasks at once.</p>
+                            </div>
+                        </div>
+
+                        <div class="ad-container ad-mid">
+                            <div class="ad-placeholder"><span>Google AdSense - Home Page Mid Ad</span></div>
+                        </div>
+
+                        <div class="info-content">
+                            <h2>Why Choose PulseTime Pro?</h2>
+                            <p>In a world of complex apps and constant notifications, PulseTime Pro offers a clean, professional, and private alternative for your time management needs.</p>
+                            <div class="benefit-list">
+                                <div class="benefit">
+                                    <i class="fa-solid fa-check"></i>
+                                    <span><strong>Privacy First:</strong> No data collection, everything stays in your browser.</span>
+                                </div>
+                                <div class="benefit">
+                                    <i class="fa-solid fa-check"></i>
+                                    <span><strong>SaaS Design:</strong> Modern, high-end interface optimized for all devices.</span>
+                                </div>
+                                <div class="benefit">
+                                    <i class="fa-solid fa-check"></i>
+                                    <span><strong>Offline Ready:</strong> Works perfectly even without an internet connection.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
                     <!-- STOPWATCH SECTION -->
-                    <section id="stopwatch" class="tab-content active">
+                    <section id="stopwatch" class="tab-content">
                         <div class="glass-card display-card">
                             <div class="timer-display" id="stopwatch-display">00:00:00.00</div>
                             <div class="controls">
@@ -162,18 +224,12 @@
                                 <ul id="lap-list"></ul>
                             </div>
                         </div>
-                        
-                        <!-- AD SLOT 2: MID-CONTENT AD -->
                         <div class="ad-container ad-mid">
-                            <div class="ad-placeholder">
-                                <i class="fa-solid fa-rectangle-ad"></i>
-                                <span>Google AdSense - In-Feed Ad</span>
-                            </div>
+                            <div class="ad-placeholder"><span>Google AdSense - Stopwatch Ad</span></div>
                         </div>
-
                         <div class="info-content">
                             <h2>The Ultimate Online Stopwatch</h2>
-                            <p>PulseTime Pro's stopwatch is designed for maximum accuracy and ease of use. Whether you're timing a workout, a cooking session, or a professional presentation, our millisecond-precision logic ensures you never miss a beat.</p>
+                            <p>Precision tracking down to the 1/100th of a second. Perfect for sports, science, and professional timing.</p>
                         </div>
                     </section>
 
@@ -203,10 +259,6 @@
                         <div class="ad-container ad-mid">
                             <div class="ad-placeholder"><span>Google AdSense - Timer Ad</span></div>
                         </div>
-                        <div class="info-content">
-                            <h2>Professional Countdown Timer</h2>
-                            <p>Our countdown timer is the perfect companion for focus sessions, kitchen tasks, or time-boxed meetings. Simply set your hours, minutes, and seconds, and let PulseTime Pro handle the rest.</p>
-                        </div>
                     </section>
 
                     <!-- POMODORO SECTION -->
@@ -225,10 +277,6 @@
                         </div>
                         <div class="ad-container ad-mid">
                             <div class="ad-placeholder"><span>Google AdSense - Pomodoro Ad</span></div>
-                        </div>
-                        <div class="info-content">
-                            <h2>Master Your Focus with Pomodoro</h2>
-                            <p>The Pomodoro Technique is a proven time management method that uses a timer to break work into intervals, traditionally 25 minutes in length, separated by short breaks.</p>
                         </div>
                     </section>
 
@@ -257,7 +305,6 @@
                                 <button id="sleep-start" class="btn btn-primary">Start</button>
                                 <button id="sleep-reset" class="btn btn-danger">Reset</button>
                             </div>
-                            <div id="fade-status" class="status-msg"></div>
                         </div>
                         <div class="ad-container ad-mid">
                             <div class="ad-placeholder"><span>Google AdSense - Sleep Timer Ad</span></div>
@@ -283,8 +330,6 @@
                             <div class="ad-container ad-mid">
                                 <div class="ad-placeholder"><span>Google AdSense - About Page Ad</span></div>
                             </div>
-                            <h3>Our Philosophy</h3>
-                            <p>We believe that your tools should never get in your way. That's why PulseTime Pro requires no account, collects no personal data, and works entirely within your browser.</p>
                         </div>
                     </section>
 
@@ -295,10 +340,6 @@
                             <p>Last updated: May 21, 2026</p>
                             <div class="ad-container ad-mid">
                                 <div class="ad-placeholder"><span>Google AdSense - Privacy Page Ad</span></div>
-                            </div>
-                            <div class="policy-section">
-                                <h3>1. Data Collection & Storage</h3>
-                                <p>PulseTime Pro is a "privacy-by-design" application. We do not collect, store, or transmit any personal information.</p>
                             </div>
                         </div>
                     </section>
@@ -316,16 +357,12 @@
         </div>
     </div>
 
-    <!-- STICKY ANCHOR AD (MAX REVENUE) -->
+    <!-- STICKY ANCHOR AD -->
     <div class="sticky-anchor-ad">
         <div class="sticky-ad-content">
             <div class="ad-label">SPONSORED</div>
-            <div class="ad-placeholder-sticky">
-                <span>Google AdSense - Sticky Bottom Anchor Ad</span>
-            </div>
-            <button class="close-sticky-ad" onclick="this.parentElement.parentElement.remove()">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+            <div class="ad-placeholder-sticky"><span>Google AdSense - Sticky Bottom Anchor Ad</span></div>
+            <button class="close-sticky-ad" onclick="this.parentElement.parentElement.remove()"><i class="fa-solid fa-xmark"></i></button>
         </div>
     </div>
 

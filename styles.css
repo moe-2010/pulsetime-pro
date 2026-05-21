@@ -410,3 +410,109 @@ nav { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
 .app-wrapper {
     padding-bottom: 90px;
 }
+
+/* Home Page / Hero Styling */
+.hero-card {
+    padding: 6rem 4rem;
+    background: linear-gradient(135deg, var(--glass-bg) 0%, rgba(99, 102, 241, 0.05) 100%);
+    text-align: center;
+}
+
+.hero-icon {
+    font-size: 4rem;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.3));
+}
+
+.hero-content h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+    line-height: 1.6;
+}
+
+.btn-large {
+    padding: 1.5rem 4rem;
+    font-size: 1.5rem;
+    border-radius: 2rem;
+}
+
+/* Feature Showcase Grid */
+.feature-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.feat-mini {
+    padding: 2.5rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feat-mini:hover {
+    transform: translateY(-10px);
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.feat-mini i {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.feat-mini h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.feat-mini p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.feat-mini:hover i, .feat-mini:hover h3, .feat-mini:hover p {
+    color: white;
+}
+
+/* Benefit List */
+.benefit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.benefit {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.15rem;
+}
+
+.benefit i {
+    color: var(--accent);
+    font-size: 1.25rem;
+}
+
+@media (max-width: 768px) {
+    .hero-card { padding: 4rem 2rem; }
+    .hero-content h2 { font-size: 2.25rem; }
+    .hero-content p { font-size: 1.1rem; }
+    .btn-large { padding: 1.2rem 2.5rem; font-size: 1.25rem; }
+}

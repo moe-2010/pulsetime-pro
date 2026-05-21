@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Tool Content Map
     const toolContent = {
+        home: { title: 'Welcome to PulseTime Pro', subtitle: 'Your all-in-one professional productivity suite.' },
         stopwatch: { title: 'Stopwatch', subtitle: 'Precision tracking with millisecond accuracy.' },
         timer: { title: 'Countdown Timer', subtitle: 'Set your goals and watch the seconds count down.' },
         pomodoro: { title: 'Pomodoro', subtitle: 'Focus on your work with timed productivity sessions.' },
