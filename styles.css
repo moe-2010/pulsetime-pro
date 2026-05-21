@@ -135,7 +135,7 @@ nav { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
 .shortcut-hint { font-size: 0.75rem; color: var(--text-muted); text-align: center; }
 .key { background: var(--glass-border); padding: 0.1rem 0.3rem; border-radius: 4px; font-weight: 700; }
 
-/* Main Content - Perfect Symmetry Logic */
+/* ABSOLUTE CENTERING LOGIC */
 .app-container {
     display: flex;
     flex: 1;
@@ -147,29 +147,36 @@ nav { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center children horizontally */
+    align-items: center; 
     padding: 4rem 2rem;
     min-width: 0;
-    /* This margin balances the fixed sidebar to keep content centered in the viewport */
-    margin-left: var(--sidebar-width);
-    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* THE BALANCED GUTTER SYSTEM */
+    /* We add padding-left to account for the sidebar, and padding-right to match it. */
+    /* This forces the 'content-wrapper' into the absolute center of the entire monitor. */
+    padding-left: var(--sidebar-width);
+    padding-right: var(--sidebar-width);
+    
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Adjust gutters when sidebar is collapsed */
 .sidebar.collapsed + .menu-overlay + .main-content {
-    margin-left: var(--sidebar-collapsed-width);
+    padding-left: var(--sidebar-collapsed-width);
+    padding-right: var(--sidebar-collapsed-width);
 }
 
 .content-wrapper {
     width: 100%;
-    max-width: 1000px; /* Wider for better balance */
+    max-width: 900px; 
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center all internal elements */
+    align-items: center; 
 }
 
 .content-header { 
     margin-bottom: 4rem; 
-    text-align: center; /* Center the titles */
+    text-align: center; 
     width: 100%;
 }
 
@@ -241,25 +248,6 @@ nav { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
 .info-content h3 { font-size: 1.75rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1.25rem; color: var(--primary); }
 .info-content p, .info-content li { font-size: 1.15rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.5rem; }
 
-/* Document & Info Pages */
-.doc-card { text-align: left; padding: 4rem; }
-.doc-card h2 { font-size: 2.75rem; font-weight: 800; margin-bottom: 2rem; color: var(--primary); }
-.nav-divider { height: 1px; background: var(--glass-border); margin: 1.5rem 0; }
-
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem; margin-top: 3rem;
-}
-
-.feat {
-    padding: 2rem; background: rgba(0,0,0,0.02);
-    border-radius: 2rem; border: 1px solid var(--glass-border);
-}
-
-.feat i { font-size: 2rem; color: var(--primary); margin-bottom: 1.25rem; }
-.feat h4 { font-size: 1.25rem; margin-bottom: 0.75rem; font-weight: 700; }
-
 /* Responsive Mobile */
 @media (max-width: 768px) {
     .sidebar {
@@ -269,7 +257,11 @@ nav { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
         z-index: 1200;
     }
     .sidebar.open { transform: translateX(0); }
-    .main-content { margin-left: 0 !important; padding: 2rem 1.25rem; }
+    .main-content { 
+        padding-left: 1.25rem !important; 
+        padding-right: 1.25rem !important; 
+        margin-left: 0 !important;
+    }
     .main-title { font-size: 2.75rem; }
     .glass-card { padding: 3rem 1.5rem; border-radius: 2.5rem; }
     .timer-display { margin: 1.5rem 0; }
