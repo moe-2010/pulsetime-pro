@@ -34,7 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
         pomodoro: { title: 'Pomodoro', subtitle: 'Focus on your work with timed productivity sessions.' },
         multitimer: { title: 'Multi-Timer', subtitle: 'Manage multiple independent tasks simultaneously.' },
         sleeptimer: { title: 'Sleep Timer', subtitle: 'Relax and drift off with automatic audio fade-out.' },
-        alarm: { title: 'Alarms', subtitle: 'Never miss a beat with customizable alerts.' }
+        alarm: { title: 'Alarms', subtitle: 'Never miss a beat with customizable alerts.' },
+        about: { title: 'About Us', subtitle: 'The story behind PulseTime Pro.' },
+        privacy: { title: 'Privacy Policy', subtitle: 'How we protect your data.' }
     };
 
     // --- UI Helpers ---
