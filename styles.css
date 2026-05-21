@@ -341,3 +341,57 @@ nav { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
+
+/* Informational Content Styling */
+.info-content {
+    margin-top: 4rem;
+    text-align: left;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
+}
+
+.info-content h2 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+    letter-spacing: -0.03em;
+}
+
+.info-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.info-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.info-content ul, .info-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.info-content li {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.info-content li strong {
+    color: var(--text-main);
+}
+
+@media (max-width: 768px) {
+    .info-content h2 { font-size: 1.75rem; }
+    .info-content p, .info-content li { font-size: 1rem; }
+}

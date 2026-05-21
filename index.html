@@ -4,34 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <!-- SEO Metadata -->
-    <title>PulseTime Pro | Premium Time Management Suite</title>
-    <meta name="description" content="PulseTime Pro is a premium SaaS-style multi-tool time management platform. Features include stopwatch, countdown timer, sleep timer, multi-timer system, Pomodoro, and alarms.">
-    <meta name="keywords" content="time management, stopwatch, timer, pomodoro, alarm, sleep timer, productivity, SaaS">
+    <!-- PRIMARY SEO METADATA -->
+    <title>PulseTime Pro | Premium Time Management & Productivity Suite</title>
+    <meta name="description" content="PulseTime Pro is a premium SaaS-style multi-tool time management platform. Master your productivity with our professional stopwatch, countdown timers, Pomodoro system, and more. No account needed, fully offline capable.">
+    <meta name="keywords" content="time management, stopwatch online, countdown timer, pomodoro timer, productivity tools, sleep timer, multi-timer system, professional alarm, SaaS time tools">
     <meta name="author" content="PulseTime Pro">
+    <link rel="canonical" href="https://moe-2010.github.io/pulsetime-pro/">
     
-    <!-- Open Graph / Facebook -->
+    <!-- OPEN GRAPH / FACEBOOK -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://moe-2010.github.io/pulsetime-pro/">
-    <meta property="og:title" content="PulseTime Pro | Premium Time Management Suite">
-    <meta property="og:description" content="Master your time with PulseTime Pro. Professional tools for professionals.">
+    <meta property="og:title" content="PulseTime Pro | The Ultimate Professional Time Management Suite">
+    <meta property="og:description" content="Experience precision and elegance with PulseTime Pro. A complete suite of time management tools designed for professionals.">
     <meta property="og:image" content="https://moe-2010.github.io/pulsetime-pro/assets/og-image.png">
+    <meta property="og:site_name" content="PulseTime Pro">
 
-    <!-- JSON-LD Structured Data -->
+    <!-- TWITTER CARD METADATA -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PulseTime Pro | Premium Time Management Suite">
+    <meta name="twitter:description" content="Master your time with our professional-grade stopwatch, Pomodoro, and multi-timer tools. Designed for maximum productivity.">
+    <meta name="twitter:image" content="https://moe-2010.github.io/pulsetime-pro/assets/twitter-card.png">
+
+    <!-- JSON-LD STRUCTURED DATA -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "PulseTime Pro",
       "url": "https://moe-2010.github.io/pulsetime-pro/",
-      "description": "Premium multi-tool time management platform.",
+      "description": "A premium, professional-grade suite of time management tools including stopwatch, countdown timer, and Pomodoro.",
       "applicationCategory": "ProductivityApplication",
       "operatingSystem": "Web Browser",
       "offers": {
         "@type": "Offer",
         "price": "0.00",
         "priceCurrency": "USD"
-      }
+      },
+      "featureList": [
+        "Millisecond-precision Stopwatch",
+        "Customizable Countdown Timers",
+        "Professional Pomodoro System",
+        "Multi-Timer Dashboard",
+        "Sleep Timer with Audio Fade",
+        "Persistent Local Storage"
+      ]
     }
     </script>
 
@@ -74,7 +90,7 @@
         </header>
 
         <div class="app-container">
-            <!-- Collapsible Sidebar Navigation -->
+            <!-- Sidebar Navigation -->
             <aside id="sidebar" class="sidebar">
                 <nav>
                     <button class="nav-item active" data-tab="stopwatch" title="Stopwatch">
@@ -126,13 +142,13 @@
             <!-- Main Content -->
             <main class="main-content">
                 <div class="content-wrapper">
-                    <!-- Main Header Title -->
+                    <!-- Dynamic Content Header -->
                     <div class="content-header">
                         <h1 id="main-title" class="main-title">Stopwatch</h1>
                         <p id="main-subtitle" class="main-subtitle">Precision tracking with millisecond accuracy.</p>
                     </div>
 
-                    <!-- Stopwatch Section -->
+                    <!-- STOPWATCH SECTION -->
                     <section id="stopwatch" class="tab-content active">
                         <div class="glass-card display-card">
                             <div class="timer-display" id="stopwatch-display">00:00:00.00</div>
@@ -145,9 +161,19 @@
                                 <ul id="lap-list"></ul>
                             </div>
                         </div>
+                        <div class="info-content">
+                            <h2>The Ultimate Online Stopwatch</h2>
+                            <p>PulseTime Pro's stopwatch is designed for maximum accuracy and ease of use. Whether you're timing a workout, a cooking session, or a professional presentation, our millisecond-precision logic ensures you never miss a beat.</p>
+                            <h3>Key Features:</h3>
+                            <ul>
+                                <li><strong>Precision:</strong> Tracks down to the 1/100th of a second.</li>
+                                <li><strong>Lap Tracking:</strong> Record multiple splits without stopping the main timer.</li>
+                                <li><strong>Background Persistence:</strong> Continues running even if you switch tabs.</li>
+                            </ul>
+                        </div>
                     </section>
 
-                    <!-- Countdown Timer Section -->
+                    <!-- TIMER SECTION -->
                     <section id="timer" class="tab-content">
                         <div class="glass-card display-card">
                             <div class="timer-input-group">
@@ -170,9 +196,19 @@
                                 <button id="timer-reset" class="btn btn-danger">Reset</button>
                             </div>
                         </div>
+                        <div class="info-content">
+                            <h2>Professional Countdown Timer</h2>
+                            <p>Our countdown timer is the perfect companion for focus sessions, kitchen tasks, or time-boxed meetings. Simply set your hours, minutes, and seconds, and let PulseTime Pro handle the rest.</p>
+                            <h3>How it Works:</h3>
+                            <ol>
+                                <li>Input your desired duration using the intuitive fields.</li>
+                                <li>Press <strong>Start</strong> to begin the countdown.</li>
+                                <li>Receive a professional audio alert when the time is up.</li>
+                            </ol>
+                        </div>
                     </section>
 
-                    <!-- Pomodoro Section -->
+                    <!-- POMODORO SECTION -->
                     <section id="pomodoro" class="tab-content">
                         <div class="glass-card display-card">
                             <div class="pomodoro-modes">
@@ -186,19 +222,31 @@
                                 <button id="pomodoro-reset" class="btn btn-danger">Reset</button>
                             </div>
                         </div>
+                        <div class="info-content">
+                            <h2>Master Your Focus with Pomodoro</h2>
+                            <p>The Pomodoro Technique is a proven time management method that uses a timer to break work into intervals, traditionally 25 minutes in length, separated by short breaks. PulseTime Pro brings this technique to your browser with a sleek, distraction-free interface.</p>
+                            <h3>Benefits of Pomodoro:</h3>
+                            <ul>
+                                <li><strong>Combat Distractions:</strong> Stay focused on a single task.</li>
+                                <li><strong>Maintain Energy:</strong> Regular breaks prevent burnout.</li>
+                                <li><strong>Track Progress:</strong> Visualize your productivity cycles.</li>
+                            </ul>
+                        </div>
                     </section>
 
-                    <!-- Multi-Timer Section -->
+                    <!-- MULTI-TIMER SECTION -->
                     <section id="multitimer" class="tab-content">
                         <div class="section-header">
                             <button id="add-multitimer" class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Timer</button>
                         </div>
-                        <div class="multitimer-grid" id="multitimer-container">
-                            <!-- Dynamic Timers -->
+                        <div class="multitimer-grid" id="multitimer-container"></div>
+                        <div class="info-content">
+                            <h2>Advanced Multi-Timer Dashboard</h2>
+                            <p>Why settle for one timer when you can have many? Our Multi-Timer system allows you to manage multiple independent countdowns simultaneously. Perfect for complex workflows, multi-step cooking, or tracking different project tasks at once.</p>
                         </div>
                     </section>
 
-                    <!-- Sleep Timer Section -->
+                    <!-- SLEEP TIMER SECTION -->
                     <section id="sleeptimer" class="tab-content">
                         <div class="glass-card display-card">
                             <div class="timer-input-group">
@@ -214,55 +262,71 @@
                             </div>
                             <div id="fade-status" class="status-msg"></div>
                         </div>
+                        <div class="info-content">
+                            <h2>Relax with the Smart Sleep Timer</h2>
+                            <p>Designed for your evening routine, our sleep timer includes a simulated audio fade-out effect. Set your time, start your relaxation, and let PulseTime Pro gently signal the end of your session.</p>
+                        </div>
                     </section>
 
-                    <!-- Alarms Section -->
+                    <!-- ALARMS SECTION -->
                     <section id="alarm" class="tab-content">
                         <div class="section-header">
                             <button id="add-alarm" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add Alarm</button>
                         </div>
-                        <div class="alarm-list" id="alarm-container">
-                            <!-- Dynamic Alarms -->
+                        <div class="alarm-list" id="alarm-container"></div>
+                        <div class="info-content">
+                            <h2>Reliable Web Alarms</h2>
+                            <p>Never miss an important event. Set multiple alarms with custom labels and toggle them on or off as needed. Our system works seamlessly in the background to ensure you're always on time.</p>
                         </div>
                     </section>
 
-                    <!-- About Us Section -->
+                    <!-- ABOUT US SECTION -->
                     <section id="about" class="tab-content">
                         <div class="glass-card doc-card">
-                            <h3>Empowering Your Time</h3>
-                            <p>PulseTime Pro was built for professionals who demand precision and elegance in their productivity tools. We believe that time management shouldn't just be functional—it should be an experience.</p>
-                            <p>Our mission is to provide a unified, premium suite of tools that help you master your schedule, whether you're working, resting, or pushing towards a deadline.</p>
+                            <h2>About PulseTime Pro</h2>
+                            <p>PulseTime Pro was born from a simple idea: that professional productivity tools should be as beautiful as they are functional. We've combined modern SaaS design principles with rock-solid timing logic to create the ultimate time management suite.</p>
+                            <h3>Our Philosophy</h3>
+                            <p>We believe that your tools should never get in your way. That's why PulseTime Pro requires no account, collects no personal data, and works entirely within your browser. It's time management for the modern, privacy-conscious professional.</p>
                             <div class="feature-grid">
                                 <div class="feat">
                                     <i class="fa-solid fa-shield-check"></i>
                                     <h4>Privacy First</h4>
-                                    <p>Your data stays on your device. Always.</p>
+                                    <p>Your data stays on your device. We never see your timers or settings.</p>
                                 </div>
                                 <div class="feat">
                                     <i class="fa-solid fa-bolt"></i>
                                     <h4>Performance</h4>
-                                    <p>Lightweight, fast, and 100% accurate.</p>
+                                    <p>Lightweight, fast, and optimized for both desktop and mobile use.</p>
+                                </div>
+                                <div class="feat">
+                                    <i class="fa-solid fa-cloud-slash"></i>
+                                    <h4>Offline Ready</h4>
+                                    <p>Works perfectly even without an internet connection once loaded.</p>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    <!-- Privacy Policy Section -->
+                    <!-- PRIVACY POLICY SECTION -->
                     <section id="privacy" class="tab-content">
                         <div class="glass-card doc-card">
-                            <h3>Privacy Policy</h3>
+                            <h2>Privacy Policy</h2>
                             <p>Last updated: May 21, 2026</p>
                             <div class="policy-section">
-                                <h4>1. Data Collection</h4>
-                                <p>PulseTime Pro is a client-side application. We do not collect, store, or transmit any of your personal data, timers, or settings to our servers. Everything is stored locally on your device using browser storage (LocalStorage).</p>
+                                <h3>1. Data Collection & Storage</h3>
+                                <p>PulseTime Pro is a "privacy-by-design" application. We do not collect, store, or transmit any personal information. All your data—including timers, alarms, and theme settings—is stored locally in your browser's <strong>LocalStorage</strong>.</p>
                             </div>
                             <div class="policy-section">
-                                <h4>2. Usage</h4>
-                                <p>Your settings and saved timers are used solely to provide the application's functionality. Clearing your browser cache will reset the application to its default state.</p>
+                                <h3>2. No Tracking</h3>
+                                <p>We do not use tracking pixels, invasive analytics, or third-party cookies to monitor your behavior. Your productivity is your business.</p>
                             </div>
                             <div class="policy-section">
-                                <h4>3. Third-Party Services</h4>
-                                <p>We may display placeholder ad slots. In a production environment with real ads, third-party providers may use cookies to serve relevant advertisements.</p>
+                                <h3>3. Cookies</h3>
+                                <p>PulseTime Pro does not use traditional cookies. We use LocalStorage to remember your preferences between sessions.</p>
+                            </div>
+                            <div class="policy-section">
+                                <h3>4. Contact</h3>
+                                <p>Since we do not collect any data, we have no way to contact you. If you have questions, please refer to our GitHub repository for support.</p>
                             </div>
                         </div>
                     </section>
