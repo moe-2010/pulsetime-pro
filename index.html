@@ -38,7 +38,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -47,13 +47,12 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="light-mode">
-    <!-- Main App Wrapper -->
     <div class="app-wrapper">
         
-        <!-- Top Navbar (Mobile & Desktop) -->
+        <!-- Professional Top Navbar -->
         <header class="top-navbar">
             <div class="nav-left">
-                <button id="menu-toggle" class="icon-btn mobile-only" aria-label="Toggle Menu">
+                <button id="menu-toggle" class="icon-btn" aria-label="Toggle Menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
                 <div class="branding">
@@ -61,47 +60,52 @@
                     <span class="brand-name">PulseTime <span class="brand-pro">Pro</span></span>
                 </div>
             </div>
+            <div class="nav-center desktop-only">
+                <span id="active-tool-title" class="active-tool-display">Stopwatch</span>
+            </div>
             <div class="nav-right">
                 <button class="theme-toggle-btn icon-btn" title="Toggle Theme">
                     <i class="fa-solid fa-moon"></i>
                 </button>
-                <button class="icon-btn desktop-only" title="Settings">
+                <button class="icon-btn" id="settings-btn" title="Settings">
                     <i class="fa-solid fa-cog"></i>
                 </button>
             </div>
         </header>
 
         <div class="app-container">
-            <!-- Sidebar Navigation -->
+            <!-- Collapsible Sidebar Navigation -->
             <aside id="sidebar" class="sidebar">
                 <nav>
-                    <button class="nav-item active" data-tab="stopwatch">
+                    <button class="nav-item active" data-tab="stopwatch" title="Stopwatch">
                         <i class="fa-solid fa-stopwatch"></i>
-                        <span>Stopwatch</span>
+                        <span class="nav-text">Stopwatch</span>
                     </button>
-                    <button class="nav-item" data-tab="timer">
+                    <button class="nav-item" data-tab="timer" title="Countdown Timer">
                         <i class="fa-solid fa-hourglass-half"></i>
-                        <span>Timer</span>
+                        <span class="nav-text">Timer</span>
                     </button>
-                    <button class="nav-item" data-tab="pomodoro">
+                    <button class="nav-item" data-tab="pomodoro" title="Pomodoro">
                         <i class="fa-solid fa-brain"></i>
-                        <span>Pomodoro</span>
+                        <span class="nav-text">Pomodoro</span>
                     </button>
-                    <button class="nav-item" data-tab="multitimer">
+                    <button class="nav-item" data-tab="multitimer" title="Multi-Timer">
                         <i class="fa-solid fa-layer-group"></i>
-                        <span>Multi-Timer</span>
+                        <span class="nav-text">Multi-Timer</span>
                     </button>
-                    <button class="nav-item" data-tab="sleeptimer">
+                    <button class="nav-item" data-tab="sleeptimer" title="Sleep Timer">
                         <i class="fa-solid fa-moon"></i>
-                        <span>Sleep Timer</span>
+                        <span class="nav-text">Sleep Timer</span>
                     </button>
-                    <button class="nav-item" data-tab="alarm">
+                    <button class="nav-item" data-tab="alarm" title="Alarms">
                         <i class="fa-solid fa-bell"></i>
-                        <span>Alarms</span>
+                        <span class="nav-text">Alarms</span>
                     </button>
                 </nav>
-                <div class="sidebar-footer mobile-only">
-                    <p>© 2026 PulseTime Pro</p>
+                <div class="sidebar-footer">
+                    <div class="shortcut-hint desktop-only">
+                        <span class="key">Space</span> to Start/Stop
+                    </div>
                 </div>
             </aside>
 
@@ -110,15 +114,15 @@
 
             <!-- Main Content -->
             <main class="main-content">
-                <!-- Header Ad Slot -->
-                <div class="ad-slot ad-header">
-                    <span class="ad-placeholder">Ad Space - Header</span>
+                <!-- Main Header Title (Professional Appearance) -->
+                <div class="content-header">
+                    <h1 id="main-title" class="main-title">Stopwatch</h1>
+                    <p id="main-subtitle" class="main-subtitle">Precision tracking with millisecond accuracy.</p>
                 </div>
 
                 <!-- Stopwatch Section -->
                 <section id="stopwatch" class="tab-content active">
                     <div class="glass-card display-card">
-                        <h2 class="section-title">Stopwatch</h2>
                         <div class="timer-display" id="stopwatch-display">00:00:00.00</div>
                         <div class="controls">
                             <button id="stopwatch-start" class="btn btn-primary">Start</button>
@@ -134,7 +138,6 @@
                 <!-- Countdown Timer Section -->
                 <section id="timer" class="tab-content">
                     <div class="glass-card display-card">
-                        <h2 class="section-title">Countdown Timer</h2>
                         <div class="timer-input-group">
                             <div class="input-field">
                                 <input type="number" id="timer-h" min="0" max="99" value="0" inputmode="numeric">
@@ -160,7 +163,6 @@
                 <!-- Pomodoro Section -->
                 <section id="pomodoro" class="tab-content">
                     <div class="glass-card display-card">
-                        <h2 class="section-title">Pomodoro</h2>
                         <div class="pomodoro-modes">
                             <button class="pomo-mode active" data-time="25">Work</button>
                             <button class="pomo-mode" data-time="5">Short Break</button>
@@ -177,19 +179,16 @@
                 <!-- Multi-Timer Section -->
                 <section id="multitimer" class="tab-content">
                     <div class="section-header">
-                        <h2 class="section-title">Multi-Timer System</h2>
                         <button id="add-multitimer" class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Timer</button>
                     </div>
                     <div class="multitimer-grid" id="multitimer-container">
-                        <!-- Dynamic Timers Go Here -->
+                        <!-- Dynamic Timers -->
                     </div>
                 </section>
 
                 <!-- Sleep Timer Section -->
                 <section id="sleeptimer" class="tab-content">
                     <div class="glass-card display-card">
-                        <h2 class="section-title">Sleep Timer</h2>
-                        <p class="section-desc">Timer with simulated audio fade-out effect.</p>
                         <div class="timer-input-group">
                             <div class="input-field">
                                 <input type="number" id="sleep-m" min="1" max="120" value="30" inputmode="numeric">
@@ -208,33 +207,25 @@
                 <!-- Alarms Section -->
                 <section id="alarm" class="tab-content">
                     <div class="section-header">
-                        <h2 class="section-title">Alarms</h2>
                         <button id="add-alarm" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add Alarm</button>
                     </div>
                     <div class="alarm-list" id="alarm-container">
-                        <!-- Dynamic Alarms Go Here -->
+                        <!-- Dynamic Alarms -->
                     </div>
                 </section>
 
-                <!-- Footer Ad Slot -->
+                <!-- Ads -->
                 <div class="ad-slot ad-footer">
                     <span class="ad-placeholder">Ad Space - Footer</span>
                 </div>
             </main>
-
-            <!-- Sidebar Ad Slot -->
-            <aside class="ad-sidebar">
-                <div class="ad-slot ad-side">
-                    <span class="ad-placeholder">Ad Space - Sidebar</span>
-                </div>
-            </aside>
         </div>
     </div>
 
     <!-- Toast Container -->
     <div id="toast-container" class="toast-container"></div>
 
-    <!-- Audio Elements for Alarms -->
+    <!-- Audio Elements -->
     <audio id="audio-alarm-1" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" preload="auto"></audio>
 
     <script src="script.js"></script>
