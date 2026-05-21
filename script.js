@@ -475,6 +475,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial Renders
     renderMultiTimers();
     renderAlarms();
+    
+    // Explicitly switch to home on load
+    switchTab('home');
 });
 
 // Ensure Home is the default entry point on every load
