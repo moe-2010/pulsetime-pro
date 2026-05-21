@@ -1,6 +1,6 @@
 /**
- * PulseTime Pro - Core JavaScript (v1.3)
- * Enhanced for Desktop: Space bar controls & Collapsible Sidebar
+ * PulseTime Pro - Core JavaScript (v1.5)
+ * Final Optimization: Absolute Home Page Default & UI Robustness
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const showToast = (message, type = 'info') => {
         const container = document.getElementById('toast-container');
+        if (!container) return;
         const toast = document.createElement('div');
         toast.className = `toast ${type}`;
         toast.innerHTML = `<i class="fa-solid ${type === 'success' ? 'fa-circle-check' : 'fa-circle-info'}"></i> <span>${message}</span>`;
@@ -90,13 +91,25 @@ document.addEventListener('DOMContentLoaded', () => {
     menuOverlay.addEventListener('click', () => toggleSidebar(false));
 
     // Initialize Sidebar State
-    if (!state.sidebarCollapsed && window.innerWidth > 768) sidebar.classList.remove('collapsed');
-    else if (window.innerWidth > 768) sidebar.classList.add('collapsed');
+    if (window.innerWidth > 768) {
+        if (state.sidebarCollapsed) sidebar.classList.add('collapsed');
+        else sidebar.classList.remove('collapsed');
+    }
 
     const switchTab = (tabId) => {
+        if (!toolContent[tabId]) return;
         state.activeTab = tabId;
-        navItems.forEach(i => i.classList.toggle('active', i.getAttribute('data-tab') === tabId));
-        tabContents.forEach(t => t.classList.toggle('active', t.id === tabId));
+        
+        // Update Nav UI
+        navItems.forEach(i => {
+            const itemTab = i.getAttribute('data-tab');
+            i.classList.toggle('active', itemTab === tabId);
+        });
+        
+        // Update Content UI
+        tabContents.forEach(t => {
+            t.classList.toggle('active', t.id === tabId);
+        });
         
         // Update Titles
         const content = toolContent[tabId];
@@ -115,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Keyboard Shortcuts ---
     window.addEventListener('keydown', (e) => {
         if (e.code === 'Space') {
-            // Prevent scrolling when pressing space
             if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
                 e.preventDefault();
                 handlePrimaryAction();
@@ -201,50 +213,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Countdown Timer Logic ---
-    const tDisplay = document.getElementById('timer-display');
-    const tStartBtn = document.getElementById('timer-start');
-    const tResetBtn = document.getElementById('timer-reset');
-    const tInputs = { h: document.getElementById('timer-h'), m: document.getElementById('timer-m'), s: document.getElementById('timer-s') };
+    const timerDisplay = document.getElementById('timer-display');
+    const timerStartBtn = document.getElementById('timer-start');
+    const timerResetBtn = document.getElementById('timer-reset');
+    const inputH = document.getElementById('timer-h');
+    const inputM = document.getElementById('timer-m');
+    const inputS = document.getElementById('timer-s');
 
     const updateTimer = () => {
         const diff = Math.max(0, Math.ceil((state.timer.endTime - Date.now()) / 1000));
         state.timer.remaining = diff;
-        tDisplay.textContent = formatShortTime(diff).padStart(8, '00:');
+        timerDisplay.textContent = formatShortTime(diff);
         if (diff <= 0) {
             clearInterval(state.timer.interval);
             state.timer.isRunning = false;
-            tStartBtn.textContent = 'Start';
+            timerStartBtn.textContent = 'Start';
             playAlarm();
             showToast('Timer Finished!', 'success');
         }
     };
 
-    tStartBtn.addEventListener('click', () => {
+    timerStartBtn.addEventListener('click', () => {
         if (state.timer.isRunning) {
             clearInterval(state.timer.interval);
             state.timer.isRunning = false;
-            tStartBtn.textContent = 'Resume';
+            timerStartBtn.textContent = 'Resume';
         } else {
             if (state.timer.remaining <= 0) {
-                const h = parseInt(tInputs.h.value) || 0, m = parseInt(tInputs.m.value) || 0, s = parseInt(tInputs.s.value) || 0;
+                const h = parseInt(inputH.value) || 0;
+                const m = parseInt(inputM.value) || 0;
+                const s = parseInt(inputS.value) || 0;
                 state.timer.remaining = (h * 3600) + (m * 60) + s;
             }
-            if (state.timer.remaining > 0) {
-                state.timer.endTime = Date.now() + (state.timer.remaining * 1000);
-                state.timer.interval = setInterval(updateTimer, 1000);
-                state.timer.isRunning = true;
-                updateTimer();
-                tStartBtn.textContent = 'Pause';
-            } else showToast('Set time first', 'info');
+            if (state.timer.remaining <= 0) return;
+            state.timer.endTime = Date.now() + (state.timer.remaining * 1000);
+            state.timer.interval = setInterval(updateTimer, 1000);
+            state.timer.isRunning = true;
+            timerStartBtn.textContent = 'Pause';
+            updateTimer();
         }
     });
 
-    tResetBtn.addEventListener('click', () => {
+    timerResetBtn.addEventListener('click', () => {
         clearInterval(state.timer.interval);
         state.timer.isRunning = false;
         state.timer.remaining = 0;
-        tDisplay.textContent = '00:00:00';
-        tStartBtn.textContent = 'Start';
+        timerDisplay.textContent = '00:00:00';
+        timerStartBtn.textContent = 'Start';
     });
 
     // --- Pomodoro Logic ---
@@ -262,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
             state.pomodoro.isRunning = false;
             pomoStartBtn.textContent = 'Start';
             playAlarm();
-            showToast(`${state.pomodoro.mode.toUpperCase()} session complete!`, 'success');
+            showToast(`${state.pomodoro.mode.toUpperCase()} session finished!`, 'success');
         }
     };
 
@@ -275,8 +290,8 @@ document.addEventListener('DOMContentLoaded', () => {
             state.pomodoro.endTime = Date.now() + (state.pomodoro.remaining * 1000);
             state.pomodoro.interval = setInterval(updatePomo, 1000);
             state.pomodoro.isRunning = true;
-            updatePomo();
             pomoStartBtn.textContent = 'Pause';
+            updatePomo();
         }
     });
 
@@ -293,9 +308,9 @@ document.addEventListener('DOMContentLoaded', () => {
             pomoModeBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             const mins = parseInt(btn.getAttribute('data-time'));
+            state.pomodoro.mode = btn.textContent.toLowerCase();
             state.pomodoro.duration = mins * 60;
             state.pomodoro.remaining = mins * 60;
-            state.pomodoro.mode = btn.textContent.toLowerCase();
             pomoDisplay.textContent = formatShortTime(state.pomodoro.remaining);
             clearInterval(state.pomodoro.interval);
             state.pomodoro.isRunning = false;
@@ -308,18 +323,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const sleepStartBtn = document.getElementById('sleep-start');
     const sleepResetBtn = document.getElementById('sleep-reset');
     const sleepInput = document.getElementById('sleep-m');
-    const fadeStatus = document.getElementById('fade-status');
 
     const updateSleep = () => {
         const diff = Math.max(0, Math.ceil((state.sleep.endTime - Date.now()) / 1000));
         state.sleep.remaining = diff;
         sleepDisplay.textContent = formatShortTime(diff);
-        if (diff <= 60 && diff > 0) fadeStatus.textContent = `Fading... ${Math.round((diff/60)*100)}%`;
         if (diff <= 0) {
             clearInterval(state.sleep.interval);
             state.sleep.isRunning = false;
             sleepStartBtn.textContent = 'Start';
-            fadeStatus.textContent = 'Finished.';
             showToast('Sleep Timer Finished', 'success');
         }
     };
@@ -339,7 +351,6 @@ document.addEventListener('DOMContentLoaded', () => {
             state.sleep.isRunning = true;
             updateSleep();
             sleepStartBtn.textContent = 'Pause';
-            fadeStatus.textContent = 'Active.';
         }
     });
 
@@ -349,7 +360,6 @@ document.addEventListener('DOMContentLoaded', () => {
         state.sleep.remaining = (parseInt(sleepInput.value) || 30) * 60;
         sleepDisplay.textContent = formatShortTime(state.sleep.remaining);
         sleepStartBtn.textContent = 'Start';
-        fadeStatus.textContent = '';
     });
 
     // --- Multi-Timer System ---
@@ -472,19 +482,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, 1000);
 
-    // Initial Renders
+    // --- Final Initialization ---
     renderMultiTimers();
     renderAlarms();
     
-    // Explicitly switch to home on load
+    // FORCE HOME PAGE ON LOAD
     switchTab('home');
-});
-
-// Ensure Home is the default entry point on every load
-document.addEventListener('DOMContentLoaded', () => {
-    // We already have a DOMContentLoaded listener, but this ensures the switch happens
-    // after all logic is loaded if the initial call was missed.
-    if (typeof switchTab === 'function') {
-        switchTab('home');
-    }
 });
